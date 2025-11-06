@@ -3,6 +3,8 @@ from tkinter import messagebox, filedialog
 import json, threading, time, sqlite3
 from pathlib import Path
 import requests
+from tkinter import ttk
+
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = BASE_DIR / 'data'
@@ -210,7 +212,8 @@ class ApiTesterApp(ctk.CTk):
         ctk.CTkButton(top, text='Clear History', command=lambda: clear_history(tree)).pack(side='right', padx=6)
 
         cols = ('id','ts','method','url','status','time')
-        tree = ctk.CTkTreeview(viewer, columns=cols, show='headings', height=18)
+        tree = ttk.Treeview(viewer, columns=cols, show='headings', height=18)
+
         tree.heading('id', text='ID')
         tree.heading('ts', text='Timestamp')
         tree.heading('method', text='Method')
